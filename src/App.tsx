@@ -9,6 +9,14 @@ import { Menu, MenuItem } from 'carbon-react/lib/components/menu'
 import Box from 'carbon-react/lib/components/box'
 import Typography from 'carbon-react/lib/components/typography'
 import Button from 'carbon-react/lib/components/button'
+import {
+  FlatTable,
+  FlatTableHead,
+  FlatTableBody,
+  FlatTableRow,
+  FlatTableHeader,
+  FlatTableCell,
+} from 'carbon-react/lib/components/flat-table'
 
 function App() {
   const { open } = useCommandBar()
@@ -106,24 +114,23 @@ function App() {
         flexDirection="column"
         gap={3}
       >
-        <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
-          <div>
-            <Typography variant="h2">Good morning, Simon!</Typography>
-            <Typography variant="p">What do you want to do today?</Typography>
-          </div>
+        <Box display="flex" justifyContent="space-between" alignItems="center">
+          <Typography variant="h2">Good morning, Simon!</Typography>
           <DesignConfig currentDesign={designOption} onDesignChange={setDesignOption} />
         </Box>
         
-        <Box display="flex" gap={2} mt={1}>
+        <div style={{ marginTop: '32px', display: 'flex', gap: '8px' }}>
           <Button size="small">Shortcut</Button>
           <Button size="small">Shortcut</Button>
           <Button size="small">Shortcut</Button>
           <Button size="small">Shortcut</Button>
           <Button size="small">Shortcut</Button>
           <Button size="small">Shortcut</Button>
-        </Box>
+        </div>
 
-        <Box display="grid" gridTemplateColumns="repeat(4, 1fr)" gap={3} mt={3}>
+        <h2 style={{ fontSize: '16px', marginTop: '24px', marginBottom: '0', fontWeight: '600' }}>Needs your attention</h2>
+        
+        <Box display="grid" gridTemplateColumns="repeat(4, 1fr)" gap={3} mt={2}>
           <div style={{ 
             padding: '24px', 
             backgroundColor: 'white', 
@@ -160,6 +167,93 @@ function App() {
             <Typography variant="h3" mb={2}>Tile 4</Typography>
             <Typography variant="p">Content for tile 4</Typography>
           </div>
+        </Box>
+
+        <Box mt={4}>
+          <Typography variant="h3" mb={2}>Recent Transactions</Typography>
+          <FlatTable>
+            <FlatTableHead>
+              <FlatTableRow>
+                <FlatTableHeader>ID</FlatTableHeader>
+                <FlatTableHeader>Customer</FlatTableHeader>
+                <FlatTableHeader>Amount</FlatTableHeader>
+                <FlatTableHeader>Date</FlatTableHeader>
+                <FlatTableHeader>Status</FlatTableHeader>
+              </FlatTableRow>
+            </FlatTableHead>
+            <FlatTableBody>
+              <FlatTableRow>
+                <FlatTableCell>INV-001</FlatTableCell>
+                <FlatTableCell>Acme Corp</FlatTableCell>
+                <FlatTableCell>$1,250.00</FlatTableCell>
+                <FlatTableCell>2024-01-15</FlatTableCell>
+                <FlatTableCell>Paid</FlatTableCell>
+              </FlatTableRow>
+              <FlatTableRow>
+                <FlatTableCell>INV-002</FlatTableCell>
+                <FlatTableCell>Tech Solutions Ltd</FlatTableCell>
+                <FlatTableCell>$3,450.00</FlatTableCell>
+                <FlatTableCell>2024-01-14</FlatTableCell>
+                <FlatTableCell>Pending</FlatTableCell>
+              </FlatTableRow>
+              <FlatTableRow>
+                <FlatTableCell>INV-003</FlatTableCell>
+                <FlatTableCell>Global Industries</FlatTableCell>
+                <FlatTableCell>$890.50</FlatTableCell>
+                <FlatTableCell>2024-01-13</FlatTableCell>
+                <FlatTableCell>Paid</FlatTableCell>
+              </FlatTableRow>
+              <FlatTableRow>
+                <FlatTableCell>INV-004</FlatTableCell>
+                <FlatTableCell>Smith & Associates</FlatTableCell>
+                <FlatTableCell>$2,100.00</FlatTableCell>
+                <FlatTableCell>2024-01-12</FlatTableCell>
+                <FlatTableCell>Overdue</FlatTableCell>
+              </FlatTableRow>
+              <FlatTableRow>
+                <FlatTableCell>INV-005</FlatTableCell>
+                <FlatTableCell>Johnson Enterprises</FlatTableCell>
+                <FlatTableCell>$5,670.25</FlatTableCell>
+                <FlatTableCell>2024-01-11</FlatTableCell>
+                <FlatTableCell>Paid</FlatTableCell>
+              </FlatTableRow>
+              <FlatTableRow>
+                <FlatTableCell>INV-006</FlatTableCell>
+                <FlatTableCell>Metro Services</FlatTableCell>
+                <FlatTableCell>$1,890.00</FlatTableCell>
+                <FlatTableCell>2024-01-10</FlatTableCell>
+                <FlatTableCell>Pending</FlatTableCell>
+              </FlatTableRow>
+              <FlatTableRow>
+                <FlatTableCell>INV-007</FlatTableCell>
+                <FlatTableCell>Digital Dynamics</FlatTableCell>
+                <FlatTableCell>$4,320.75</FlatTableCell>
+                <FlatTableCell>2024-01-09</FlatTableCell>
+                <FlatTableCell>Paid</FlatTableCell>
+              </FlatTableRow>
+              <FlatTableRow>
+                <FlatTableCell>INV-008</FlatTableCell>
+                <FlatTableCell>Coastal Trading Co</FlatTableCell>
+                <FlatTableCell>$2,560.00</FlatTableCell>
+                <FlatTableCell>2024-01-08</FlatTableCell>
+                <FlatTableCell>Paid</FlatTableCell>
+              </FlatTableRow>
+              <FlatTableRow>
+                <FlatTableCell>INV-009</FlatTableCell>
+                <FlatTableCell>Prime Logistics</FlatTableCell>
+                <FlatTableCell>$3,210.50</FlatTableCell>
+                <FlatTableCell>2024-01-07</FlatTableCell>
+                <FlatTableCell>Pending</FlatTableCell>
+              </FlatTableRow>
+              <FlatTableRow>
+                <FlatTableCell>INV-010</FlatTableCell>
+                <FlatTableCell>Apex Manufacturing</FlatTableCell>
+                <FlatTableCell>$6,780.00</FlatTableCell>
+                <FlatTableCell>2024-01-06</FlatTableCell>
+                <FlatTableCell>Paid</FlatTableCell>
+              </FlatTableRow>
+            </FlatTableBody>
+          </FlatTable>
         </Box>
       </Box>
     </>

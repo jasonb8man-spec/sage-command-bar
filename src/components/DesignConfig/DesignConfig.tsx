@@ -30,7 +30,6 @@ export default function DesignConfig({ currentDesign, onDesignChange }: DesignCo
           <circle cx="10" cy="10" r="3"></circle>
           <path d="M10 1v2m0 14v2M19 10h-2M3 10H1m15.364-5.364l-1.414 1.414M6.05 14.95l-1.414 1.414m10.728 0l-1.414-1.414M6.05 6.05L4.636 4.636"></path>
         </svg>
-        Design Config
       </button>
 
       {isOpen && (

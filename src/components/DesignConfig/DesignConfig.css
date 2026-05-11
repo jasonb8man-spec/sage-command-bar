@@ -5,14 +5,14 @@
 .design-config-trigger {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 14px;
-  font-weight: 500;
   color: #000;
   transition: all 0.15s ease;
 }
@@ -23,8 +23,8 @@
 }
 
 .design-config-trigger svg {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
 }
 
 .design-config-panel {
