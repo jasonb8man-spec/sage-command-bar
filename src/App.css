@@ -1,3 +1,35 @@
+/* Layout adjustments for Global Header */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-top: 48px; /* GlobalHeader (48px) */
+}
+
+/* Remove gap below GlobalHeader */
+[data-component="global-header"] {
+  margin-bottom: 0 !important;
+}
+
+/* Global Nav Typography Styles */
+[data-component="global-header"] [data-component="menu"] {
+  color: var(--colors-components-menu-yang-100, #FFF);
+  font-family: "Sage UI";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 21px */
+}
+
+[data-component="global-header"] [data-component="menu"] * {
+  color: var(--colors-components-menu-yang-100, #FFF) !important;
+  font-family: "Sage UI" !important;
+  font-size: 14px !important;
+  font-style: normal !important;
+  font-weight: 500 !important;
+  line-height: 150% !important;
+}
+
 .counter {
   font-size: 16px;
   padding: 5px 10px;
