@@ -4,12 +4,27 @@ import { useCommandBar } from '../../hooks/useCommandBar';
 import { useCommandNavigation } from '../../hooks/useCommandNavigation';
 import { commands } from '../../data/commands';
 import type { CommandItem } from '../../types/commands';
+import type { DesignOption } from '../DesignConfig';
 import './CommandBar.css';
 
-export default function CommandBar() {
+interface CommandBarProps {
+  designOption?: DesignOption;
+}
+
+export default function CommandBar({ designOption = 'A' }: CommandBarProps) {
   const { isOpen, close } = useCommandBar();
   const [searchValue, setSearchValue] = useState('');
   const [isClosing, setIsClosing] = useState(false);
+  const [recentSearches] = useState<string[]>([
+    'Customer: Acme Corp',
+    'Invoice #12345',
+    'Expense Report - March',
+    'Supplier: Tech Solutions Ltd',
+    'Payment to John Doe',
+    'Sales Report Q1 2024',
+    'Bank Reconciliation',
+    'Tax Return 2023',
+  ]);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const resultsRef = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -107,19 +122,60 @@ export default function CommandBar() {
           <input
             ref={searchInputRef}
             type="text"
-            placeholder="Search commands..."
+            placeholder="Find or create anything in Sage"
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
             className="command-bar-search-input"
           />
+          {searchValue && (
+            <button
+              className="command-bar-clear-button"
+              onClick={() => setSearchValue('')}
+              aria-label="Clear search"
+            >
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M5 5 L15 15 M15 5 L5 15"></path>
+              </svg>
+            </button>
+          )}
         </div>
 
         {/* Results */}
         <div className="command-bar-results">
-          {Object.keys(groupedCommands).length === 0 ? (
+          {designOption === 'B' && !searchValue ? (
+            // Option B: Show recent searches when no search value
+            <div>
+              <div className="command-group-header">Recent</div>
+              {recentSearches.map((search, index) => (
+                <div
+                  key={index}
+                  ref={(el) => {
+                    resultsRef.current[index] = el;
+                  }}
+                  className={`command-item ${index === highlightedIndex ? 'highlighted' : ''}`}
+                  onClick={() => {
+                    setSearchValue(search);
+                  }}
+                  onMouseEnter={() => setHighlightedIndex(index)}
+                >
+                  <div className="command-item-content">
+                    <div className="command-item-label">{search}</div>
+                  </div>
+                  <svg className="command-item-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M7 15l5-5-5-5"></path>
+                  </svg>
+                </div>
+              ))}
+            </div>
+          ) : Object.keys(groupedCommands).length === 0 ? (
             <div className="command-bar-no-results">
               <div className="no-results-text">
                 No results for "{searchValue}"
+              </div>
+              <div className="no-results-help">
+                <p>Search for customers, suppliers, transactions, reports or accounts.</p>
+                <p>Search by name, address, amount, date and more.</p>
+                <p>Type create, to add a new invoice, expense, or any type of transaction.</p>
               </div>
             </div>
           ) : (
@@ -151,9 +207,6 @@ export default function CommandBar() {
                       >
                         <div className="command-item-content">
                           <div className="command-item-label">{command.label}</div>
-                          {command.description && (
-                            <div className="command-item-description">{command.description}</div>
-                          )}
                         </div>
                         {command.shortcut && (
                           <div className="command-item-shortcut">

@@ -1,12 +1,12 @@
 import type { CommandItem } from '../types/commands';
 
 export const commands: CommandItem[] = [
-  // Navigation
+  // Jump to
   {
     id: 'nav-dashboard',
     label: 'Go to Dashboard',
     description: 'View your main dashboard',
-    group: 'Navigation',
+    group: 'Jump to',
     shortcut: ['g', 'd'],
     action: () => console.log('Navigate to Dashboard'),
   },
@@ -14,7 +14,7 @@ export const commands: CommandItem[] = [
     id: 'nav-transactions',
     label: 'Go to Transactions',
     description: 'View all transactions',
-    group: 'Navigation',
+    group: 'Jump to',
     shortcut: ['g', 't'],
     action: () => console.log('Navigate to Transactions'),
   },
@@ -22,7 +22,7 @@ export const commands: CommandItem[] = [
     id: 'nav-reports',
     label: 'Go to Reports',
     description: 'View financial reports',
-    group: 'Navigation',
+    group: 'Jump to',
     shortcut: ['g', 'r'],
     action: () => console.log('Navigate to Reports'),
   },
@@ -30,16 +30,16 @@ export const commands: CommandItem[] = [
     id: 'nav-settings',
     label: 'Go to Settings',
     description: 'Manage your settings',
-    group: 'Navigation',
+    group: 'Jump to',
     shortcut: ['g', 's'],
     action: () => console.log('Navigate to Settings'),
   },
-  // Actions
+  // Create
   {
     id: 'action-new-transaction',
     label: 'New Transaction',
     description: 'Create a new transaction',
-    group: 'Actions',
+    group: 'Create',
     shortcut: ['n', 't'],
     action: () => console.log('New Transaction'),
   },
@@ -47,7 +47,7 @@ export const commands: CommandItem[] = [
     id: 'action-export-report',
     label: 'Export Report',
     description: 'Export current report to CSV',
-    group: 'Actions',
+    group: 'Create',
     shortcut: ['e', 'r'],
     action: () => console.log('Export Report'),
   },
@@ -55,43 +55,43 @@ export const commands: CommandItem[] = [
     id: 'action-import-data',
     label: 'Import Data',
     description: 'Import data from file',
-    group: 'Actions',
+    group: 'Create',
     action: () => console.log('Import Data'),
   },
   {
     id: 'action-invite-team',
     label: 'Invite Team Member',
     description: 'Send an invitation to join your team',
-    group: 'Actions',
+    group: 'Create',
     action: () => console.log('Invite Team Member'),
   },
-  // Settings
+  // Recent
   {
     id: 'settings-dark-mode',
     label: 'Toggle Dark Mode',
     description: 'Switch between light and dark themes',
-    group: 'Settings',
+    group: 'Recent',
     action: () => console.log('Toggle Dark Mode'),
   },
   {
     id: 'settings-language',
     label: 'Change Language',
     description: 'Select your preferred language',
-    group: 'Settings',
+    group: 'Recent',
     action: () => console.log('Change Language'),
   },
   {
     id: 'settings-billing',
     label: 'Manage Billing',
     description: 'Update payment methods and billing info',
-    group: 'Settings',
+    group: 'Recent',
     action: () => console.log('Manage Billing'),
   },
   {
     id: 'settings-sign-out',
     label: 'Sign Out',
     description: 'Sign out of your account',
-    group: 'Settings',
+    group: 'Recent',
     action: () => console.log('Sign Out'),
   },
 ];

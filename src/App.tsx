@@ -1,15 +1,18 @@
 import './App.css'
+import { useState } from 'react'
 import { CommandBar } from './components/CommandBar'
 import { useCommandBar } from './hooks'
+import { DesignConfig } from './components/DesignConfig'
+import type { DesignOption } from './components/DesignConfig'
 import GlobalHeader from 'carbon-react/lib/components/global-header'
 import { Menu, MenuItem } from 'carbon-react/lib/components/menu'
 import Box from 'carbon-react/lib/components/box'
-import Card from 'carbon-react/lib/components/card'
-import { CardRow, CardColumn } from 'carbon-react/lib/components/card'
 import Typography from 'carbon-react/lib/components/typography'
+import Button from 'carbon-react/lib/components/button'
 
 function App() {
   const { open } = useCommandBar()
+  const [designOption, setDesignOption] = useState<DesignOption>('A')
 
   const handleSearchClick = (e: React.MouseEvent) => {
     e.preventDefault()
@@ -26,7 +29,7 @@ function App() {
 
   return (
     <>
-      <CommandBar />
+      <CommandBar designOption={designOption} />
       <GlobalHeader aria-label="Sage global header">
         <Menu menuType="black" flex="1">
           <MenuItem href="#" flex="0 0 auto" ariaLabel="waffle menu">
@@ -103,45 +106,60 @@ function App() {
         flexDirection="column"
         gap={3}
       >
-        <Typography variant="h2">Leda Construction</Typography>
+        <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
+          <div>
+            <Typography variant="h2">Good morning, Simon!</Typography>
+            <Typography variant="p">What do you want to do today?</Typography>
+          </div>
+          <DesignConfig currentDesign={designOption} onDesignChange={setDesignOption} />
+        </Box>
+        
+        <Box display="flex" gap={2} mt={1}>
+          <Button size="small">Shortcut</Button>
+          <Button size="small">Shortcut</Button>
+          <Button size="small">Shortcut</Button>
+          <Button size="small">Shortcut</Button>
+          <Button size="small">Shortcut</Button>
+          <Button size="small">Shortcut</Button>
+        </Box>
 
-        <Box mt={2}>
-          <Card spacing="medium">
-            <CardRow>
-              <CardColumn>
-                <Typography variant="h4" mb={2}>
-                  Quick Actions
-                </Typography>
-                <Typography variant="p">
-                  Press <Typography variant="strong">⌘K</Typography> to open the command bar and quickly navigate through the application.
-                </Typography>
-                <Box mt={3}>
-                  <button
-                    onClick={open}
-                    style={{
-                      padding: '12px 24px',
-                      fontSize: '14px',
-                      fontWeight: 500,
-                      cursor: 'pointer',
-                      borderRadius: '8px',
-                      border: '1px solid var(--colorsUtilityYin055)',
-                      backgroundColor: 'var(--colorsUtilityYang100)',
-                      color: 'var(--colorsUtilityYin090)',
-                      transition: 'all 0.2s ease',
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor = 'var(--colorsUtilityYin015)'
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.backgroundColor = 'var(--colorsUtilityYang100)'
-                    }}
-                  >
-                    Open Command Bar ⌘K
-                  </button>
-                </Box>
-              </CardColumn>
-            </CardRow>
-          </Card>
+        <Box display="grid" gridTemplateColumns="repeat(4, 1fr)" gap={3} mt={3}>
+          <div style={{ 
+            padding: '24px', 
+            backgroundColor: 'white', 
+            borderRadius: '8px', 
+            boxShadow: '0 2px 4px rgba(0,0,0,0.1)' 
+          }}>
+            <Typography variant="h3" mb={2}>Tile 1</Typography>
+            <Typography variant="p">Content for tile 1</Typography>
+          </div>
+          <div style={{ 
+            padding: '24px', 
+            backgroundColor: 'white', 
+            borderRadius: '8px', 
+            boxShadow: '0 2px 4px rgba(0,0,0,0.1)' 
+          }}>
+            <Typography variant="h3" mb={2}>Tile 2</Typography>
+            <Typography variant="p">Content for tile 2</Typography>
+          </div>
+          <div style={{ 
+            padding: '24px', 
+            backgroundColor: 'white', 
+            borderRadius: '8px', 
+            boxShadow: '0 2px 4px rgba(0,0,0,0.1)' 
+          }}>
+            <Typography variant="h3" mb={2}>Tile 3</Typography>
+            <Typography variant="p">Content for tile 3</Typography>
+          </div>
+          <div style={{ 
+            padding: '24px', 
+            backgroundColor: 'white', 
+            borderRadius: '8px', 
+            boxShadow: '0 2px 4px rgba(0,0,0,0.1)' 
+          }}>
+            <Typography variant="h3" mb={2}>Tile 4</Typography>
+            <Typography variant="p">Content for tile 4</Typography>
+          </div>
         </Box>
       </Box>
     </>

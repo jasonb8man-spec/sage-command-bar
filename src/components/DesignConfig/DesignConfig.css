@@ -1,0 +1,148 @@
+.design-config {
+  position: relative;
+}
+
+.design-config-trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #000;
+  transition: all 0.15s ease;
+}
+
+.design-config-trigger:hover {
+  background-color: #f5f5f5;
+  border-color: #999;
+}
+
+.design-config-trigger svg {
+  width: 16px;
+  height: 16px;
+}
+
+.design-config-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 320px;
+  max-height: 500px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+}
+
+.design-config-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.design-config-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+}
+
+.design-config-close {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  transition: color 0.15s ease;
+}
+
+.design-config-close:hover {
+  color: #000;
+}
+
+.design-config-close svg {
+  width: 16px;
+  height: 16px;
+}
+
+.design-config-options {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+  max-height: 400px;
+}
+
+.design-option {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: left;
+}
+
+.design-option:hover:not(.disabled) {
+  border-color: #999;
+  background-color: #f9f9f9;
+}
+
+.design-option.active {
+  border-color: #00a859;
+  background-color: #f0fdf7;
+}
+
+.design-option.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.design-option-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 4px;
+}
+
+.design-option-description {
+  font-size: 12px;
+  color: #666;
+}
+
+.design-option-check {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #00a859;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: bold;
+}
